@@ -5,7 +5,6 @@ import pickle
 from pathlib import Path
 import matplotlib.pyplot as plt
 import seaborn as sns
-import numpy as np
 
 @st.cache_resource
 def load_model():
@@ -49,7 +48,7 @@ df = pd.read_csv(uploaded_file)
 fig = sns.pairplot(df.drop('Unnamed: 0', axis=1))
 st.pyplot(fig)
 
-numeric_cols = df.drop('Unnamed: 0', axis=1).select_dtypes(include=[np.number]).columns.tolist()
+numeric_cols = df.drop('Unnamed: 0', axis=1).select_dtypes(include=['number']).columns.tolist()
 
 if len(numeric_cols) > 1:
     corr_matrix = df[numeric_cols].corr()
